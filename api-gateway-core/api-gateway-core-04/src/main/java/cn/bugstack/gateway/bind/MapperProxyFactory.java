@@ -27,7 +27,7 @@ public class MapperProxyFactory {
     private final Map<String, IGenericReference> genericReferenceCache = new ConcurrentHashMap<>();
 
     public IGenericReference newInstance(GatewaySession gatewaySession){
-        return genericReferenceCache.computeIfAbsent(uri, uri -> {
+        return genericReferenceCache.computeIfAbsent(uri, k -> {
             HttpStatement httpStatement = gatewaySession.getConfiguration().getHttpStatement(uri);
             //泛化调用
             MapperProxy genericReferenceProxy = new MapperProxy(gatewaySession, uri);

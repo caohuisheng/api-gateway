@@ -40,8 +40,8 @@ public class GatewayServerHandler extends BaseHandler<FullHttpRequest> {
         if(uri.equals("/favicon")) return;
 
         // 服务泛化调用
-        GatewaySession gatewaySession = gatewaySessionFactory.openSession();
-        IGenericReference reference = gatewaySession.getMapper(uri);
+        GatewaySession gatewaySession = gatewaySessionFactory.openSession(uri);
+        IGenericReference reference = gatewaySession.getMapper();
         String result = reference.$invoke("test") + " " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
         // 返回信息处理
