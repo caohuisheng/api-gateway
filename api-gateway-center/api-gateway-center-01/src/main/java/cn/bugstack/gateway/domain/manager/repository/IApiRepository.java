@@ -1,4 +1,4 @@
-package cn.bugstack.gateway.application;
+package cn.bugstack.gateway.domain.manager.repository;
 
 import cn.bugstack.gateway.domain.manager.model.ApiData;
 
@@ -6,10 +6,10 @@ import java.util.List;
 
 /**
  * Author: chs
- * Description: API服务
+ * Description: HttpStatement仓储
  * CreateTime: 2024-09-09
  */
-public interface IApiService {
+public interface IApiRepository {
 
     List<ApiData> queryHttpStatementList();
 

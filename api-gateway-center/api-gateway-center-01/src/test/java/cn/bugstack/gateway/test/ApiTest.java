@@ -1,7 +1,7 @@
 package cn.bugstack.gateway.test;
 
 import cn.bugstack.gateway.application.IApiService;
-import cn.bugstack.gateway.domain.model.ApiData;
+import cn.bugstack.gateway.domain.manager.model.ApiData;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

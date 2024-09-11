@@ -1,7 +1,7 @@
 package cn.bugstack.gateway.interfaces;
 
 import cn.bugstack.gateway.application.IApiService;
-import cn.bugstack.gateway.domain.model.ApiData;
+import cn.bugstack.gateway.domain.manager.model.ApiData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
