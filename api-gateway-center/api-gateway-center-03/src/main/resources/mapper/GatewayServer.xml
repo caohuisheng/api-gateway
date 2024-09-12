@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.gateway.infrastucture.dao.GatewayServerDao">
+
+    <resultMap id="dataMap" type="cn.bugstack.gateway.infrastucture.po.GatewayServer">
+        <result column="id" property="id"/>
+        <result column="group_id" property="groupId"/>
+        <result column="group_name" property="groupName"/>
+    </resultMap>
+
+    <select id="queryGatewayServerList" resultMap="dataMap">
+        select * from gateway_server
+    </select>
+
+
+</mapper>
