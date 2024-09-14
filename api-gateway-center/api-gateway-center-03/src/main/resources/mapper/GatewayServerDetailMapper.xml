@@ -14,8 +14,8 @@
     </resultMap>
 
     <insert id="insert" parameterType="cn.bugstack.gateway.infrastucture.po.GatewayServerDetail">
-        insert into gateway_server_detail(gateway_id, gateway_name, gateway_address, status)
-        values(#{gatewayId}, #{gatewayName}, #{gatewayAddress}, #{status})
+        insert into gateway_server_detail(group_id, gateway_id, gateway_name, gateway_address, status)
+        values(#{groupId}, #{gatewayId}, #{gatewayName}, #{gatewayAddress}, #{status})
     </insert>
 
     <select id="queryGatewayServerDetail" resultMap="dataMap">
