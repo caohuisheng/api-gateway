@@ -7,16 +7,19 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * Author: chs
  * Description:
  * CreateTime: 2024-09-08
  */
+//@Component
 public class GatewayAuthorizingRealm extends AuthorizingRealm {
 
     @Override
-    public Class getAuthenticationTokenClass() {
+    public Class<?> getAuthenticationTokenClass() {
         return GatewayAuthenticationToken.class;
     }
 
@@ -35,4 +38,5 @@ public class GatewayAuthorizingRealm extends AuthorizingRealm {
         }
         return new SimpleAuthenticationInfo(token.getPrincipal(), token.getCredentials(),this.getName());
     }
+
 }

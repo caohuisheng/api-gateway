@@ -52,7 +52,7 @@
         <!-- 网关助手 -->
         <dependency>
             <groupId>cn.bugstack.gateway</groupId>
-            <artifactId>api-gateway-assist-02</artifactId>
+            <artifactId>api-gateway-assist-03</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

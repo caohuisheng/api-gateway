@@ -35,8 +35,8 @@ public abstract class BaseExecutor implements Executor{
         String parameterType = httpStatement.getParameterType();
         String[] parameterTypes = new String[]{parameterType};
         Object[] args = SimpleTypeRegistry.isSimpleType(parameterType)?params.values().toArray():new Object[]{params};
-        log.info("执行调用 method:{}#{}.{}({})",httpStatement.getApplication(),httpStatement.getInterfaceName(),
-                JSON.toJSONString(parameterTypes),JSON.toJSONString(params));
+        log.info("执行调用 method:{}#{}.{}{}({})",httpStatement.getApplication(),httpStatement.getInterfaceName(),
+                httpStatement.getMethodName(),JSON.toJSONString(parameterTypes),JSON.toJSONString(params));
         //抽象方法
         try {
             Object data = doExec(methodName, parameterTypes, args);
