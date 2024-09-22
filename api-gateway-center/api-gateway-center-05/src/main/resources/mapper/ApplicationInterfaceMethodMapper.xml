@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.gateway.infrastucture.dao.ApplicationInterfaceMethodDao">
+
+    <insert id="insert" parameterType="cn.bugstack.gateway.infrastucture.po.ApplicationInterfaceMethod">
+        insert into application_interface_method(system_id, interface_id, method_id, method_name, parameter_type, uri, http_command_type, auth)
+        values(#{systemId}, #{interfaceId}, #{methodId}, #{methodName}, #{parameterType}, #{uri}, #{httpCommandType}, #{auth})
+    </insert>
+</mapper>

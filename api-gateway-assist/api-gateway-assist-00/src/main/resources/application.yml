@@ -4,6 +4,6 @@ server:
 api-gateway:
   address: http://localhost:8001 #注册中心
   groupId: 10001 # 网关分组
-  gatewayId: api-gateway-g1 # 网关标识
+  gatewayId: api-gateway-g4 # 网关标识
   gatewayName: 电商配送网关 # 网关名称
   gatewayAddress: 127.0.0.1:7397 # 网关服务

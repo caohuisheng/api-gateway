@@ -95,7 +95,7 @@ public class GatewayCenterService {
 
         String resultStr = null;
         try {
-            resultStr = HttpUtil.post(address + "/wg/admin/register/registerEvent", paramMap, 500);
+            resultStr = HttpUtil.post(address + "/wg/admin/register/registerEvent", paramMap, 5000);
         } catch (Exception e) {
             log.error("应用服务接口事件方法异常，链接资源不可用：{}", address + "/wg/admin/register/registerEvent", e);
         }

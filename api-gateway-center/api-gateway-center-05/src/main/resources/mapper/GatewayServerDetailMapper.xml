@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.gateway.infrastucture.dao.GatewayServerDetailDao">
+
+    <resultMap id="dataMap" type="cn.bugstack.gateway.infrastucture.po.GatewayServerDetail">
+        <result column="id" property="id"/>
+        <result column="group_id" property="groupId"/>
+        <result column="gateway_id" property="gatewayId"/>
+        <result column="gateway_name" property="gatewayName"/>
+        <result column="gateway_address" property="gatewayAddress"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.bugstack.gateway.infrastucture.po.GatewayServerDetail">
+        insert into gateway_server_detail(group_id, gateway_id, gateway_name, gateway_address, status)
+        values(#{groupId}, #{gatewayId}, #{gatewayName}, #{gatewayAddress}, #{status})
+    </insert>
+
+    <select id="queryGatewayServerDetail" resultMap="dataMap">
+        select * from gateway_server_detail
+        where gateway_id = #{gatewayId} and gateway_address = #{gatewayAddress}
+    </select>
+
+    <update id="updateGatewayServerStatus" parameterType="cn.bugstack.gateway.infrastucture.po.GatewayServerDetail">
+        update gateway_server_detail set status = #{status}
+        where gateway_id = #{gatewayId} and gateway_address = #{gatewayAddress}
+    </update>
+
+</mapper>

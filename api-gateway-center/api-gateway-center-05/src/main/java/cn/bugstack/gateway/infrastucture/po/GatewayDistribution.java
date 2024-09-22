@@ -38,14 +38,6 @@ public class GatewayDistribution {
         this.groupId = groupId;
     }
 
-    public String getGatewayId() {
-        return gatewayId;
-    }
-
-    public void setGatewayId(String gatewayId) {
-        this.gatewayId = gatewayId;
-    }
-
     public String getSystemId() {
         return systemId;
     }

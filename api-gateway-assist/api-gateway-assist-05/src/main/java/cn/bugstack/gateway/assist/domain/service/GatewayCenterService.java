@@ -21,6 +21,8 @@ public class GatewayCenterService {
 
     private Logger log = LoggerFactory.getLogger(GatewayCenterService.class);
 
+
+
     public void doRegister(String address, String groupId, String gatewayId, String gatewayName, String gatewayAddress){
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("groupId", groupId);
@@ -41,15 +43,26 @@ public class GatewayCenterService {
         }
     }
 
-    public ApplicationSystemRichInfo pullApplicationSystemRichInfo(String address, String gatewayId){
+    public ApplicationSystemRichInfo pullApplicationSystemRichInfo(String address, String gatewayId, String systemId){
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("gatewayId", gatewayId);
         paramMap.put("systemId","");
-        String resultStr = HttpUtil.post(address + "/wg/admin/config/queryApplicationSystemRichInfo", paramMap, 350);
+        String resultStr = HttpUtil.post(address + "/wg/admin/config/queryApplicationSystemRichInfo", paramMap, 5000);
         Result<ApplicationSystemRichInfo> result = JSON.parseObject(resultStr, new TypeReference<Result<ApplicationSystemRichInfo>>(){});
         log.info("从网关中心拉取应用服务和接口的配置信息到本地完成注册，gatewayId:{}",gatewayId);
         if(!"0000".equals(result.getCode())){
             throw new GatewayException("从网关中心拉取应用服务和接口的配置信息到本地完成注册异常 gatewayId:" + gatewayId);
+        }
+        return result.getData();
+    }
+
+    public Map<String,String> queryRedisConfig(String address){
+        String resultStr = HttpUtil.post(address + "/wg/admin/config/queryRedisConfig", "", 2500);
+        Result<Map<String, String>> result = JSON.parseObject(resultStr, new TypeReference<Result<Map<String, String>>>() {
+        });
+        log.info("从网关中心查询redis配置信息成功, result:{}",resultStr);
+        if(!"0000".equals(result.getCode())){
+            throw new GatewayException("从网关中心查询redis配置信息异常");
         }
         return result.getData();
     }

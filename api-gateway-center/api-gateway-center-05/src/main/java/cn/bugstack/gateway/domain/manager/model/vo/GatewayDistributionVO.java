@@ -1,14 +1,12 @@
-package cn.bugstack.gateway.infrastucture.po;
+package cn.bugstack.gateway.domain.manager.model.vo;
 
 /**
  * Author: chs
  * Description: 网关分配
  * CreateTime: 2024-09-10
  */
-public class GatewayDistribution {
+public class GatewayDistributionVO {
 
-    // 自增主键
-    private String id;
     // 分组标识
     private String groupId;
     // 网关标识
@@ -17,18 +15,6 @@ public class GatewayDistribution {
     private String systemId;
     // 系统名称
     private String systemName;
-    // 创建时间
-    private String createTime;
-    // 更新时间
-    private String updateTime;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getGroupId() {
         return groupId;
@@ -62,19 +48,4 @@ public class GatewayDistribution {
         this.systemName = systemName;
     }
 
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
 }

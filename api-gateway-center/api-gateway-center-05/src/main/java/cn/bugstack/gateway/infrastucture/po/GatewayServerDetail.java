@@ -2,10 +2,10 @@ package cn.bugstack.gateway.infrastucture.po;
 
 /**
  * Author: chs
- * Description: 网关分配
+ * Description: 网关服务器详细信息
  * CreateTime: 2024-09-10
  */
-public class GatewayDistribution {
+public class GatewayServerDetail {
 
     // 自增主键
     private String id;
@@ -13,10 +13,12 @@ public class GatewayDistribution {
     private String groupId;
     // 网关标识
     private String gatewayId;
-    // 系统标识
-    private String systemId;
-    // 系统名称
-    private String systemName;
+    // 网关名称
+    private String gatewayName;
+    // 网关地址
+    private String gatewayAddress;
+    // 服务状态：0不可用、1可使用
+    private Integer status;
     // 创建时间
     private String createTime;
     // 更新时间
@@ -46,20 +48,28 @@ public class GatewayDistribution {
         this.gatewayId = gatewayId;
     }
 
-    public String getSystemId() {
-        return systemId;
+    public String getGatewayName() {
+        return gatewayName;
     }
 
-    public void setSystemId(String systemId) {
-        this.systemId = systemId;
+    public void setGatewayName(String gatewayName) {
+        this.gatewayName = gatewayName;
     }
 
-    public String getSystemName() {
-        return systemName;
+    public String getGatewayAddress() {
+        return gatewayAddress;
     }
 
-    public void setSystemName(String systemName) {
-        this.systemName = systemName;
+    public void setGatewayAddress(String gatewayAddress) {
+        this.gatewayAddress = gatewayAddress;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getCreateTime() {
