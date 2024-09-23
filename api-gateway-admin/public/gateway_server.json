@@ -1,0 +1,17 @@
+{
+  "list":[
+    {
+      "groupId": "10001",
+      "groupName": "北京网关"
+    },
+    {
+      "groupId": "10002",
+      "groupName": "上海网关"
+    },
+    {
+      "groupId": "10003",
+      "groupName": "广州网关"
+    }
+  ],
+  "pageTotal": 3
+}
