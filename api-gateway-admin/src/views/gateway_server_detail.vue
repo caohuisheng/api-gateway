@@ -2,12 +2,12 @@
 	<div>
 		<div class="container">
 			<div class="handle-box">
-				<el-select v-model="query.address" placeholder="网关分组" class="handle-select mr10">
-					<el-option key="1" label="廊坊网关" value="廊坊网关"></el-option>
-					<el-option key="2" label="亦庄网关" value="亦庄网关"></el-option>
-					<el-option key="2" label="东丽网关" value="东丽网关"></el-option>
+				<el-select v-model="query.groupId" placeholder="网关分组" class="handle-select mr10">
+					<el-option key="10001" label="廊坊网关" value="10001"></el-option>
+					<el-option key="10002" label="亦庄网关" value="10002"></el-option>
+					<el-option key="10003" label="东丽网关" value="10003"></el-option>
 				</el-select>
-				<el-input v-model="query.name" placeholder="应用信息" class="handle-input mr10"></el-input>
+				<el-input v-model="query.gatewayId" placeholder="网关标识" class="handle-input mr10"></el-input>
 				<el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
 				<el-button type="primary" :icon="Plus">新增</el-button>
 			</div>
@@ -91,8 +91,8 @@ interface TableItem {
 }
 
 const query = reactive({
-	address: '',
-	name: '',
+	groupId: '',
+	gatewayId: '',
 	pageIndex: 1,
 	pageSize: 10
 });
@@ -100,9 +100,9 @@ const tableData = ref<TableItem[]>([]);
 const pageTotal = ref(0);
 // 获取表格数据
 const getData = () => {
-	gatewayServerDetailData().then(res => {
-		tableData.value = res.data.list;
-		pageTotal.value = res.data.pageTotal || 50;
+	gatewayServerDetailData(query).then(res => {
+		tableData.value = res.data.data;
+		pageTotal.value = res.data.total || 50;
 	});
 };
 getData();
@@ -123,7 +123,8 @@ const handleDelete = (index: number) => {
 	// 二次确认删除
 	ElMessageBox.confirm('确定要删除吗？', '提示', {
 		type: 'warning'
-	}).then(() => {
+	})
+		.then(() => {
 			ElMessage.success('删除成功');
 			tableData.value.splice(index, 1);
 		})

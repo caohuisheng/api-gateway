@@ -2,24 +2,40 @@
 	<div>
 		<div class="container">
 			<div class="handle-box">
-				<el-select v-model="query.groupId" placeholder="网关分组" class="handle-select mr10">
-					<el-option key="1" label="廊坊网关" value="10001"></el-option>
-					<el-option key="2" label="亦庄网关" value="10002"></el-option>
-					<el-option key="2" label="东丽网关" value="10003"></el-option>
-				</el-select>
-				<!-- <el-input v-model="query.name" placeholder="应用信息" class="handle-input mr10"></el-input> -->
+				<el-input v-model="query.systemId" placeholder="应用标识" class="handle-input mr10"></el-input>
+				<el-input v-model="query.interfaceId" placeholder="接口标识" class="handle-input mr10"></el-input>
 				<el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-				<el-button type="primary" :icon="Plus" @click="handleAdd">新增</el-button>
+				<el-button type="primary" :icon="Plus">新增</el-button>
 			</div>
 			<el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
-				<el-table-column prop="groupId" label="分组编号" width="128" align="center"></el-table-column>
-				<el-table-column prop="groupName" label="分组名称"></el-table-column>
+<!--				<el-table-column prop="id" label="ID" width="128" align="center"></el-table-column>-->
+				<el-table-column prop="systemId" label="系统标识" width="210"></el-table-column>
+				<el-table-column prop="interfaceId" label="接口标识" width="300"></el-table-column>
+				<el-table-column prop="methodId" label="方法标识"></el-table-column>
+				<el-table-column prop="methodName" label="方法名称"></el-table-column>
+				<el-table-column prop="parameterType" label="参数类型" width="280"></el-table-column>
+				<el-table-column prop="uri" label="网关接口" width="180"></el-table-column>
+				<el-table-column prop="httpCommandType" label="接口类型" width="100" align="center"></el-table-column>
+				<el-table-column label="鉴权" align="center" width="100">
+					<template #default="scope">
+						<div v-if="scope.row.auth === 1">
+							<el-tag :type="'success'">
+								{{"需鉴权"}}
+							</el-tag>
+						</div>
+						<div v-else>
+							<el-tag :type="'danger'">
+								{{"不鉴权"}}
+							</el-tag>
+						</div>
+					</template>
+				</el-table-column>
 				<el-table-column label="操作" width="220" align="center">
 					<template #default="scope">
 						<el-button text :icon="Edit" @click="handleEdit(scope.$index, scope.row)" v-permiss="15">
 							编辑
 						</el-button>
-						<el-button text :icon="Delete" class="red" @click="handleDelete(scope.$index)" v-permiss="15">
+						<el-button text :icon="Delete" class="red" @click="handleDelete(scope.$index)" v-permiss="16">
 							删除
 						</el-button>
 					</template>
@@ -38,13 +54,13 @@
 		</div>
 
 		<!-- 编辑弹出框 -->
-		<el-dialog title="编辑" v-model="editVisible" width="30%" v-show="editVisible">
+		<el-dialog title="编辑" v-model="editVisible" width="30%">
 			<el-form label-width="70px">
-				<el-form-item label="分组编号">
-					<el-input v-model="form.groupId"></el-input>
+				<el-form-item label="用户名">
+					<el-input v-model="form.name"></el-input>
 				</el-form-item>
-				<el-form-item label="分组名称">
-					<el-input v-model="form.groupName"></el-input>
+				<el-form-item label="地址">
+					<el-input v-model="form.address"></el-input>
 				</el-form-item>
 			</el-form>
 			<template #footer>
@@ -59,28 +75,30 @@
 
 <script setup lang="ts" name="basetable">
 import { ref, reactive } from 'vue';
-import { ElMessage, ElMessageBox, TableV2Placeholder } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { Delete, Edit, Search, Plus } from '@element-plus/icons-vue';
-import { gatewayServerData } from '../api/index';
+import { applicationInterfaceMethodData } from '../api/index';
 
 interface TableItem {
-	groupId: string,
-	groupName: string
+	id: number;
+	name: string;
+	money: string;
+	state: string;
+	date: string;
+	address: string;
 }
 
 const query = reactive({
-	groupId: '',
+	systemId: '',
+	methodId: '',
 	pageIndex: 1,
 	pageSize: 10
 });
-const globalParam = {
-	showEdit: false
-}
 const tableData = ref<TableItem[]>([]);
 const pageTotal = ref(0);
 // 获取表格数据
 const getData = () => {
-	gatewayServerData(query).then(res => {
+	applicationInterfaceMethodData(query).then(res => {
 		tableData.value = res.data.data;
 		pageTotal.value = res.data.total || 50;
 	});
@@ -114,22 +132,21 @@ const handleDelete = (index: number) => {
 // 表格编辑时弹窗和保存
 const editVisible = ref(false);
 let form = reactive({
-	groupId: '',
-	groupName: ''
+	name: '',
+	address: ''
 });
 let idx: number = -1;
-const handleEdit = (index, row) => {
-	form.groupId = row.groupId;
-	form.groupName = row.groupName;
-	editVisible.value = true;
+const handleEdit = (index: number, row: any) => {
 	idx = index;
+	form.name = row.name;
+	form.address = row.address;
+	editVisible.value = true;
 };
 const saveEdit = () => {
-	tableData.value[idx].groupId = form.groupId;
-	tableData.value[idx].groupName = form.groupName;
-
 	editVisible.value = false;
 	ElMessage.success(`修改第 ${idx + 1} 行成功`);
+	tableData.value[idx].name = form.name;
+	tableData.value[idx].address = form.address;
 };
 </script>
 

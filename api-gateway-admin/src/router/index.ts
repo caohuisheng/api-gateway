@@ -25,10 +25,55 @@ const routes: RouteRecordRaw[] = [
                 path: '/gateway_server_detail',
                 name: 'gateway_server_detail',
                 meta: {
-                    title: '网关节点',
+                    title: '网关算力',
                     permiss: '2'
                 },
                 component: () => import(/* webpackChunkName: "dashboard" */ '../views/gateway_server_detail.vue'),
+            },
+            {
+                path: '/gateway_server_detail',
+                name: 'gateway_server_detail',
+                meta: {
+                    title: '网关节点',
+                    permiss: '2',
+                },
+                component: () => import(/* webpackChunkName: "table" */ '../views/gateway_server_detail.vue'),
+            },
+            {
+                path: '/gateway_distribution',
+                name: 'gateway_distribution',
+                meta: {
+                    title: '网关映射',
+                    permiss: '2',
+                },
+                component: () => import(/* webpackChunkName: "table" */ '../views/gateway_distribution.vue'),
+            },
+            {
+                path: '/application_system',
+                name: 'application_system',
+                meta: {
+                    title: '应用系统',
+                    permiss: '2',
+                },
+                component: () => import(/* webpackChunkName: "table" */ '../views/application_system.vue'),
+            },
+            {
+                path: '/application_interface',
+                name: 'application_interface',
+                meta: {
+                    title: '应用接口',
+                    permiss: '2',
+                },
+                component: () => import(/* webpackChunkName: "table" */ '../views/application_interface.vue'),
+            },
+            {
+                path: '/application_interface_method',
+                name: 'application_interface_method',
+                meta: {
+                    title: '接口方法',
+                    permiss: '2',
+                },
+                component: () => import(/* webpackChunkName: "table" */ '../views/application_interface_method.vue'),
             },
             {
                 path: '/dashboard',

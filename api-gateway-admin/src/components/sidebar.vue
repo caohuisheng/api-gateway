@@ -75,7 +75,7 @@ const items = [
             },
             {
                 index: '/gateway_server_detail',
-                title: '网关节点',
+                title: '网关算力',
                 permiss: '2',
             },
             {
