@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.gateway.infrastucture.dao.ApplicationInterfaceMethodDao">
+
+    <resultMap id="dataMap" type="cn.bugstack.gateway.infrastucture.po.ApplicationInterfaceMethod">
+        <result column="system_id" property="systemId"/>
+        <result column="interface_id" property="interfaceId"/>
+        <result column="method_id" property="methodId"/>
+        <result column="method_name" property="methodName"/>
+        <result column="parameter_type" property="parameterType"/>
+        <result column="uri" property="uri"/>
+        <result column="http_command_type" property="httpCommandType"/>
+        <result column="auth" property="auth"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.bugstack.gateway.infrastucture.po.ApplicationInterfaceMethod">
+        insert into application_interface_method(system_id, interface_id, method_id, method_name, parameter_type, uri, http_command_type, auth)
+        values(#{systemId}, #{interfaceId}, #{methodId}, #{methodName}, #{parameterType}, #{uri}, #{httpCommandType}, #{auth})
+    </insert>
+
+    <select id="queryApplicationInterfaceMethodListByPage" parameterType="cn.bugstack.gateway.infrastucture.common.OperationRequest" resultMap="dataMap">
+        select * from application_interface_method
+        <where>
+            <if test="data != null and data.systemId != ''">
+                and system_id = #{data.systemId}
+            </if>
+            <if test="data != null and data.methodId != ''">
+                and method_id = #{data.methodId}
+            </if>
+        </where>
+        limit #{pageStart},#{pageSize}
+    </select>
+
+    <select id="queryApplicationInterfaceMethodListCount" parameterType="cn.bugstack.gateway.infrastucture.common.OperationRequest" resultType="int">
+        select count(1) from application_interface_method
+        <where>
+            <if test="data != null and data.systemId != ''">
+                and system_id = #{data.systemId}
+            </if>
+            <if test="data != null and data.methodId != ''">
+                and method_id = #{data.methodId}
+            </if>
+        </where>
+    </select>
+</mapper>
