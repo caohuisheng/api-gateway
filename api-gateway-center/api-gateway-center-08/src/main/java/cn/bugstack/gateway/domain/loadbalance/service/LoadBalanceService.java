@@ -70,6 +70,7 @@ public class LoadBalanceService extends AbstractLoadBalanceService{
             StringBuilder locationConfStr = new StringBuilder();
             for(LocationVO locationVO:locationList){
                 locationConfStr.append("\n\t\tlocation").append(" ").append(locationVO.getName()).append(" {\r\n");
+                locationConfStr.append("\t\t\t").append("rewrite ^").append(locationVO.getName()).append("(.*)$ /$1 break;\r\n");
                 locationConfStr.append("\t\t\t").append("proxy_pass").append(" ").append(locationVO.getProxyPass()).append(";\r\n");
                 locationConfStr.append("\t\t}\r\n");
             }

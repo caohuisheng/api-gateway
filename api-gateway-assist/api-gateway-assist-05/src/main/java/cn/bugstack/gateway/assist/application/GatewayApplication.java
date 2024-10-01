@@ -50,7 +50,7 @@ public class GatewayApplication implements ApplicationContextAware,ApplicationLi
                     properties.getGatewayName(),
                     properties.getGatewayAddress());
 
-            addMappers(null);
+            addMappers("");
         } catch (Exception e) {
             log.error("网关服务启动失败，停止服务", e);
         }

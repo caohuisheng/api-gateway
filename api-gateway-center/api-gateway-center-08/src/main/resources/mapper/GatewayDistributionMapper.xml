@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.gateway.infrastucture.dao.GatewayDistributionDao">
+
+    <resultMap id="dataMap" type="cn.bugstack.gateway.infrastucture.po.GatewayDistribution">
+        <result column="group_id" property="groupId"/>
+        <result column="gateway_id" property="gatewayId"/>
+        <result column="system_id" property="systemId"/>
+        <result column="system_name" property="systemName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="queryGatewayDistributionList" resultMap="dataMap">
+        select * from gateway_distribution where gateway_id = #{gatewayId}
+    </select>
+
+    <select id="queryGatewayDistribution" parameterType="string" resultType="string">
+        select gateway_id from gateway_distribution where system_id = #{systemId}
+    </select>
+
+    <select id="queryGatewayDistributionListByPage" parameterType="cn.bugstack.gateway.infrastucture.common.OperationRequest" resultMap="dataMap">
+        select * from gateway_distribution
+        <where>
+            <if test="data != null and data.groupId != ''">
+                and group_id = #{data.groupId}
+            </if>
+            <if test="data != null and data.gatewayId != ''">
+                and gateway_id = #{data.gatewayId}
+            </if>
+        </where>
+        limit #{pageStart},#{pageSize}
+    </select>
+
+    <select id="queryGatewayDistributionListCount" parameterType="cn.bugstack.gateway.infrastucture.common.OperationRequest" resultType="int">
+        select count(1) from gateway_distribution
+        <where>
+            <if test="data != null and data.groupId != ''">
+                and group_id = #{data.groupId}
+            </if>
+            <if test="data != null and data.gatewayId != ''">
+                and gateway_id = #{data.gatewayId}
+            </if>
+        </where>
+    </select>
+
+</mapper>

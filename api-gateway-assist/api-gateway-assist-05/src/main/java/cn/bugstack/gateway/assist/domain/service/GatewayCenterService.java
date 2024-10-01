@@ -46,7 +46,7 @@ public class GatewayCenterService {
     public ApplicationSystemRichInfo pullApplicationSystemRichInfo(String address, String gatewayId, String systemId){
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("gatewayId", gatewayId);
-        paramMap.put("systemId","");
+        paramMap.put("systemId",systemId);
         String resultStr = HttpUtil.post(address + "/wg/admin/config/queryApplicationSystemRichInfo", paramMap, 5000);
         Result<ApplicationSystemRichInfo> result = JSON.parseObject(resultStr, new TypeReference<Result<ApplicationSystemRichInfo>>(){});
         log.info("从网关中心拉取应用服务和接口的配置信息到本地完成注册，gatewayId:{}",gatewayId);
