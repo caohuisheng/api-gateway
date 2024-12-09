@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+dubbo:
+  config-center:
+    timeout: 600000
+  application:
+    name: api-gateway-test-provider
+    version: 1.0.0
+  registry:
+    #address: N/A 泛化调用不能使用此方式
+    address: zookeeper://127.0.0.1:2181
+    timeout: 600000
+  protocol:
+    name: dubbo
+    port: 20881
+  scan:
+    base-packages: cn.bugstack.gateway.rpc
+
+#前面章节不涉及到上报服务，需要把以下配置注释掉
+api-gateway-sdk:
+  enabled: true
+  address: http://localhost:8001  # 注册中心；从这里获取接口信息以及完成注册网关操作
+  systemId: api-gateway-test-provider
+  systemName: 网关sdk测试工程
+  systemRegistry: zookeeper://127.0.0.1:2181?timeout=600000

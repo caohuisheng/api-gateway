@@ -28,10 +28,10 @@ public class GatewayApplication implements ApplicationContextAware,ApplicationLi
 
     private Logger log = LoggerFactory.getLogger(GatewayApplication.class);
 
-    private GatewayServiceProperties properties;
-    private GatewayCenterService gatewayCenterService;
-    private Configuration configuration;
-    private Channel gatewaySocketServerChannel;
+    private final GatewayServiceProperties properties;
+    private final GatewayCenterService gatewayCenterService;
+    private final Configuration configuration;
+    private final Channel gatewaySocketServerChannel;
 
     public GatewayApplication(GatewayServiceProperties properties,GatewayCenterService gatewayCenterService, Configuration configuration,Channel gatewaySocketServerChannel){
         this.properties = properties;

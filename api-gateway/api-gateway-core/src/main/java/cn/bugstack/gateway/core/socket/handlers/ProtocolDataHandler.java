@@ -51,7 +51,7 @@ public class ProtocolDataHandler extends BaseHandler<FullHttpRequest> {
 
             //3.封装返回结果
             DefaultHttpResponse response = new ResponseParser().parse("0000".equals(result.getCode()) ?
-                    GatewayResultMessage.buildSuccess(result,configuration.getNode()) : GatewayResultMessage.buildError(AgreementConstants.ResponseCode._404.getCode(), "网关协议调用失败",configuration.getNode()));
+                    GatewayResultMessage.buildSuccess(result.getData(),configuration.getNode()) : GatewayResultMessage.buildError(AgreementConstants.ResponseCode._404.getCode(), "网关协议调用失败",configuration.getNode()));
             channel.writeAndFlush(response);
         } catch (Exception e) {
             e.printStackTrace();

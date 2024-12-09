@@ -43,7 +43,7 @@ public class GatewayAutoConfig {
         //2.构建redis服务
         RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
         standaloneConfiguration.setHostName(redisConfig.get("host"));
-        standaloneConfiguration.setPort(Integer.valueOf(redisConfig.get("port")));
+        standaloneConfiguration.setPort(Integer.parseInt(redisConfig.get("port")));
         //3.默认配置信息
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         poolConfig.setMaxTotal(100);

@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     username: root
-    password: root
-    url: jdbc:mysql://127.0.0.1:3306/api_gateway?useUnicode=true&characterEncoding=UTF-8
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:13306/api_gateway?useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver
     tomcat:
       initialSize: 5
@@ -26,7 +26,7 @@ spring:
       testOnReturn: false
   redis:
     host: 127.0.0.1
-    port: 6379
+    port: 16379
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml

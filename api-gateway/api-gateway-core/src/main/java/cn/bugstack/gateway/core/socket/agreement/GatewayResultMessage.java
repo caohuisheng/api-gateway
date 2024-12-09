@@ -20,7 +20,8 @@ public class GatewayResultMessage {
     }
 
     public static GatewayResultMessage buildSuccess(Object data, String node){
-        return new GatewayResultMessage(AgreementConstants.ResponseCode._200.getCode(), AgreementConstants.ResponseCode._200.getInfo(),data,node);
+        GatewayResultMessage res = new GatewayResultMessage(AgreementConstants.ResponseCode._200.getCode(), AgreementConstants.ResponseCode._200.getInfo(),data,node);
+        return res;
     }
 
     public static GatewayResultMessage buildError(String code, String info, String node){
@@ -37,5 +38,9 @@ public class GatewayResultMessage {
 
     public Object getData() {
         return data;
+    }
+
+    public String getNode() {
+        return node;
     }
 }

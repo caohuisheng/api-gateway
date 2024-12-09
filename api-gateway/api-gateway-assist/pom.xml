@@ -86,11 +86,11 @@
             <version>5.8.10</version>
         </dependency>
         <!-- api-gateway-core-08 -->
-        <dependency>
-            <groupId>cn.bugstack.gateway</groupId>
-            <artifactId>api-gateway-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.bugstack.gateway</groupId>-->
+<!--            <artifactId>api-gateway-core</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
         <!-- 引入网关通信组件 -->
         <dependency>
             <groupId>cn.bugstack.gateway</groupId>

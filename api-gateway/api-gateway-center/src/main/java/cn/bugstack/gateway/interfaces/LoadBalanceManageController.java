@@ -28,7 +28,7 @@ public class LoadBalanceManageController {
     private Logger log = LoggerFactory.getLogger(LoadBalanceManageController.class);
 
     @Resource
-    private ILoadBalanceService loadBalanceServicel;
+    private ILoadBalanceService loadBalanceService;
 
     @RequestMapping(value = "/updateNginxConfig", produces = "application/json;charset=utf-8")
     public void updateNginxConfig(){

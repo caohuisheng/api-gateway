@@ -14,10 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author 小傅哥，微信：fustack
- * @description 会话服务处理器
- * @github github.com/fuzhengwei
- * @copyright 公众号：bugstack虫洞栈 | 博客：bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * Author: chs
+ * Description: 会话服务处理器
+ * CreateTime: 2024-09-08
  */
 public class GatewayServerHandler extends BaseHandler<FullHttpRequest> {
 
